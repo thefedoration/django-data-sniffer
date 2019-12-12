@@ -8,7 +8,7 @@ setup(
     name='django-data-sniffer',
     version='0.1',
     packages=['data_sniffer'],
-    description='Sniff your data to look for any data issues',
+    description='Sniff your django models to look for any data issues',
     long_description=README,
     author='Fedor Garin',
     author_email='fedor.garin@gmail.com',
