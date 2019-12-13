@@ -69,16 +69,21 @@ def get_healthcheck_status(key, refresh=False):
     display_field = "id"
     extra_display_fields = []
     if "queryset" in config:
-        if "filters" in config["queryset"]:
+        if "filters" in config["queryset"] and config["queryset"]["filters"]:
             queryset = queryset.filter(**config["queryset"]["filters"])
-        if "excludes" in config["queryset"]:
+
+        if "excludes" in config["queryset"] and config["queryset"]["excludes"]:
             queryset = queryset.exclude(**config["queryset"]["excludes"])
-        if "ordering" in config["queryset"]:
+
+        if "ordering" in config["queryset"] and config["queryset"]["ordering"]:
             queryset = queryset.order_by(config["queryset"]["ordering"])
-        if "display_field" in config["queryset"]:
+
+        if "display_field" in config["queryset"] and config["queryset"]["display_field"]:
             display_field = config["queryset"]["display_field"]
+
         if "extra_display_fields" in config["queryset"]:
             extra_display_fields = config["queryset"]["extra_display_fields"]
+
         queryset = queryset.distinct()
 
     # get any additional data
@@ -112,10 +117,10 @@ def get_healthcheck_status(key, refresh=False):
                 "'%s' alert has no queryset" % alert["name"])
 
         alerted_objects = queryset
-        if alert["queryset"]["filters"]:
+        if "filters" in alert["queryset"] and alert["queryset"]["filters"]:
             alerted_objects = alerted_objects.filter(
                 **alert["queryset"]["filters"])
-        if alert["queryset"]["excludes"]:
+        if "excludes" in alert["queryset"] and alert["queryset"]["excludes"]:
             alerted_objects = alerted_objects.exclude(
                 **alert["queryset"]["excludes"])
 
