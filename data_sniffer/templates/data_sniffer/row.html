@@ -13,7 +13,9 @@
         <div class="extra">
             {% for value in object.additional_values %}
                 <span class="arrow"> > </span>
-                <span>{{value}}</span>
+                <a href="{% url 'data_sniffer_health_check' key=key %}?category={{config.queryset.extra_display_fields|index:forloop.counter0}}#{{value}}">
+                    {{value}} - {{forloop.counter0}}
+                </a>
             {% endfor %}
         </div>
     </div>
