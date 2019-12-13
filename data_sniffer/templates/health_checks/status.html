@@ -1,0 +1,80 @@
+{% include 'doctype.html'%}
+    <head>
+		<meta charset="utf-8" />
+		<title>Health check - {{config.name}}</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" type="image/ico" href="{{STATIC_URL}}img/favicon.ico" />
+        <link href="{{STATIC_URL}}health_checks/css/style.css" rel="stylesheet" type="text/css"/>
+
+        <script>
+
+        </script>
+	</head>
+
+	<body>
+        <div class="page-wrap">
+            <h1>{{config.name}}</h1>
+            <div class="table-header">
+                <div class="count">
+                    Scanned <b>{{count_total}}</b> row{% if count_total != 1 %}s{% endif %} for <b>{{config.alerts|length}}</b> condition{% if config.alerts|length != 1 %}s{% endif %}
+                    <br>
+                    <span>{{count_alerts}}</span> alert{% if count_alerts != 1 %}s{% endif %} & <span>{{count_warnings}}</span> warning{% if count_warnings != 1 %}s{% endif %}
+                </div>
+                <div class="buttons">
+                    {% if show_all %}
+                        <a href="{% url 'object_health_check' key=key %}">
+                            <button>Show unhealthy</button>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'object_health_check' key=key %}?all=1">
+                            <button>Show all</button>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="table-container">
+                <div class="table">
+                    {% for object in objects %}
+                        <div class="row">
+                           <div class="icon">
+                                {% if object.has_alert %}
+                                    <span class="red">⚠</span>
+                                {% elif object.has_warning %}
+                                    <span class="orange">⚠</span>
+                                {% else %}
+                                    <span class="green">☑</span>
+                                {% endif %}
+                            </div>
+                            <div class="values">
+                                <div class="name">{{object.display_name}}</div>
+                                <div class="extra">
+                                    {% for value in object.additional_values %}
+                                        <span class="arrow""> > </span>
+                                        <span>{{value}}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="errors">
+                                {% for alert in object.alerts %}
+                                    <div class="alert">{{alert}}</div>
+                                {% endfor %}
+                                {% for warning in object.warnings %}
+                                    <div class="warning">{{warning}}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                    {% if objects|length == 0 %}
+                        <div class="empty">
+                            <h2>No unhealthy objects!</h2>
+                            <h3>Good for you</h3>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+	</body>
+</html>

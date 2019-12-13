@@ -1,0 +1,123 @@
+body{
+  background: #fafafa;
+  font-family: sans-serif;
+}
+
+.page-wrap{
+  width: 800px;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color:#2980b9;
+}
+
+.table-container{
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.table-header{
+  font-size: 12px;
+  padding: 5px;
+  display: flex;
+}
+
+.table-header .count {
+  opacity: 0.5;
+}
+
+.table-header .buttons {
+  margin-left: auto;
+}
+
+.table-header .buttons button {
+  border-radius: 3px;
+  padding: 8px 15px;
+  color: white;
+  background: #3498db;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.table{
+
+}
+
+.table .empty{
+  padding: 50px;
+  background:  #2ecc71;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
+.table .row {
+  padding: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  background: white;
+}
+
+.table .row .icon{
+  width: 20px;
+  text-align: center;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.table .row .icon .red{
+  color: #e74c3c;
+}
+.table .row .icon .orange{
+  color: #f39c12;
+}
+.table .row .icon .green{
+  color: #2ecc71;
+}
+
+.table .row .values{
+
+}
+
+.table .row .values .name{
+  font-size: 18px;
+}
+.table .row .values .extra{
+  font-size: 12px;
+  color: #95a5a6;
+}
+
+.table .row .values .extra .arrow{
+  opacity: 0.5
+}
+.table .row .values .extra .arrow:first-child{
+  display:none;
+}
+
+.table .row .errors{
+  text-align: right;
+  margin-left: auto;
+}
+
+.table .row .alert{
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.table .row .warning{
+  color: #f39c12;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.table .row:last-child{
+  border-bottom: none;
+}
