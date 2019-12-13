@@ -69,16 +69,17 @@ def get_healthcheck_status(key, refresh=False):
     display_field = "id"
     extra_display_fields = []
     if "queryset" in config:
-        if config["queryset"]["filters"]:
+        if "filters" in config["queryset"]:
             queryset = queryset.filter(**config["queryset"]["filters"])
-        if config["queryset"]["excludes"]:
+        if "excludes" in config["queryset"]:
             queryset = queryset.exclude(**config["queryset"]["excludes"])
-        if config["queryset"]["ordering"]:
+        if "ordering" in config["queryset"]:
             queryset = queryset.order_by(config["queryset"]["ordering"])
         if "display_field" in config["queryset"]:
             display_field = config["queryset"]["display_field"]
         if "extra_display_fields" in config["queryset"]:
             extra_display_fields = config["queryset"]["extra_display_fields"]
+        queryset = queryset.distinct()
 
     # get any additional data
     additional_values = queryset.values_list('id', *extra_display_fields)
