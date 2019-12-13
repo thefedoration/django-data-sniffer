@@ -6,7 +6,7 @@ README = open(os.path.join(here, 'README.md')).read()
 
 setup(
     name='django-data-sniffer',
-    version='0.3.0',
+    version='0.4.0',
     packages=[
         'data_sniffer',
         'data_sniffer.templatetags',
