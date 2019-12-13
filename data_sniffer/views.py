@@ -3,10 +3,10 @@ from __future__ import absolute_import
 from django.shortcuts import render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 
-from health_checks.errors import (
+from .errors import (
     InvalidKeyError, ConfigurationError, InvalidAlertError
 )
-from health_checks.utils import get_healthcheck_status, get_healthcheck_config
+from .utils import get_healthcheck_status, get_healthcheck_config
 
 @staff_member_required
 def health_check(request, key):

@@ -3,8 +3,8 @@ from collections import OrderedDict
 
 from django.db.models.loading import get_model
 
-from health_checks.constants import ALERT_ERROR, ALERT_WARNING
-from health_checks.errors import (
+from .constants import ALERT_ERROR, ALERT_WARNING
+from .errors import (
     InvalidKeyError,
     InvalidAlertError,
     ConfigurationError,

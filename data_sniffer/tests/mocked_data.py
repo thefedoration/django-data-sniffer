@@ -1,4 +1,4 @@
-from health_checks.constants import ALERT_WARNING, ALERT_ERROR, NOTIFICATION_EMAIL
+from ..constants import ALERT_WARNING, ALERT_ERROR, NOTIFICATION_EMAIL
 
 HEALTH_CHECKS = {
     "positions": {

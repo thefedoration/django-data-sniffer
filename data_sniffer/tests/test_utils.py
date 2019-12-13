@@ -2,10 +2,10 @@ import mock
 
 from django.test import SimpleTestCase
 
-from health_checks.tests.mocked_data import HEALTH_CHECKS
-from health_checks.constants import ALERT_WARNING
-from health_checks.utils import get_healthcheck_config, get_healthcheck_status
-from health_checks.errors import ConfigurationError, InvalidAlertError
+from .mocked_data import HEALTH_CHECKS
+from ..constants import ALERT_WARNING
+from ..utils import get_healthcheck_config, get_healthcheck_status
+from ..errors import ConfigurationError, InvalidAlertError
 
 
 class TestHealthcheckUtils(SimpleTestCase):
