@@ -35,37 +35,19 @@
             </div>
             <div class="table-container">
                 <div class="table">
-                    {% for object in objects %}
-                        <div class="row">
-                           <div class="icon">
-                                {% if object.has_alert %}
-                                    <span class="red">⚠</span>
-                                {% elif object.has_warning %}
-                                    <span class="orange">⚠</span>
-                                {% else %}
-                                    <span class="green">☑</span>
-                                {% endif %}
-                            </div>
-                            <div class="values">
-                                <div class="name">{{object.display_name}}</div>
-                                <div class="extra">
-                                    {% for value in object.additional_values %}
-                                        <span class="arrow""> > </span>
-                                        <span>{{value}}</span>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            <div class="errors">
-                                {% for alert in object.alerts %}
-                                    <div class="alert">{{alert}}</div>
-                                {% endfor %}
-                                {% for warning in object.warnings %}
-                                    <div class="warning">{{warning}}</div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                    {if categories|length > 0}
+                        {% for category in categories %}
+                            <h3>{{category.value}}</h3>
+                            {% for object in category.objects %}
+                                {% include "row.html" %}
+                            {% endfor %}
+                        {% endif %}
+                    {% else %}
+                        {% for object in objects %}
+                            {% include "row.html" %}
+                        {% endfor %}
+                    {% endif %}
 
-                    {% endfor %}
 
                     {% if objects|length == 0 %}
                         <div class="empty">
