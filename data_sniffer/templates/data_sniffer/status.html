@@ -23,11 +23,11 @@
                 </div>
                 <div class="buttons">
                     {% if show_all %}
-                        <a href="{% url 'object_health_check' key=key %}">
+                        <a href="{% url 'data_sniffer_health_check' key=key %}">
                             <button>Show unhealthy</button>
                         </a>
                     {% else %}
-                        <a href="{% url 'object_health_check' key=key %}?all=1">
+                        <a href="{% url 'data_sniffer_health_check' key=key %}?all=1">
                             <button>Show all</button>
                         </a>
                     {% endif %}

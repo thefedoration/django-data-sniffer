@@ -9,7 +9,7 @@ from .errors import (
 from .utils import get_healthcheck_status, get_healthcheck_config
 
 @staff_member_required
-def health_check(request, key):
+def data_sniffer_health_check(request, key):
     """
     Serves up default health check template
     """
@@ -21,11 +21,11 @@ def health_check(request, key):
     try:
         status = get_healthcheck_status(key)
     except ConfigurationError:
-        return render(request, 'health_checks/invalid.html', {
+        return render(request, 'data_sniffer/invalid.html', {
             'error': "Misconfigured health check",
         }, status=400)
     except InvalidAlertError:
-        return render(request, 'health_checks/invalid.html', {
+        return render(request, 'data_sniffer/invalid.html', {
             'error': "Misconfigured health check alert",
         }, status=400)
 
@@ -35,7 +35,7 @@ def health_check(request, key):
     else:
         objects = [status[obj_id] for obj_id in status if status[obj_id]['has_warning'] or status[obj_id]['has_alert']]  # noqa
 
-    return render(request, 'health_checks/status.html', {
+    return render(request, 'data_sniffer/status.html', {
         'key': key,
         'config': config,
         'objects': objects,
