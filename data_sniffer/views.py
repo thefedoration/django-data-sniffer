@@ -49,7 +49,7 @@ def data_sniffer_health_check(request, key):
                     "has_warning": False,
                     "has_alert": False
                 }
-            categories[obj_category]["objects"].push(object)
+            categories[obj_category]["objects"].append(object)
             if object["has_warning"]:
                 categories[obj_category]["has_warning"] = True
             if object["has_alert"]:
