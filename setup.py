@@ -6,7 +6,7 @@ README = open(os.path.join(here, 'README.md')).read()
 
 setup(
     name='django-data-sniffer',
-    version='0.2.1',
+    version='0.3.0',
     packages=[
         'data_sniffer',
     ],
@@ -19,7 +19,7 @@ setup(
     url='https://github.com/thefedoration/django-data-sniffer/',
     license='MIT',
     install_requires=[
-        'Django>=1.7,<1.9',
+        'Django>=1.7,<1.8',
         'requests'
     ]
 )
