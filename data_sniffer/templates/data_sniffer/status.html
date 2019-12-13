@@ -35,7 +35,7 @@
             </div>
             <div class="table-container">
                 <div class="table">
-                    {if categories|length > 0}
+                    {% if categories|length > 0 %}
                         {% for category in categories %}
                             <h3>{{category.value}}</h3>
                             {% for object in category.objects %}
