@@ -112,7 +112,7 @@ def get_healthcheck_status(key, refresh=False):
             raise InvalidAlertError("'%s' alert has no message" % alert["name"])
 
         # ensure has valid queryset
-        if "queryset" not in alert or (not alert["queryset"]["filters"] and not alert["queryset"]["excludes"]):  # noqa
+        if "queryset" not in alert or ("filters" not in alert["queryset"] and "excludes" not in alert["queryset"]):  # noqa
             raise InvalidAlertError(
                 "'%s' alert has no queryset" % alert["name"])
 
