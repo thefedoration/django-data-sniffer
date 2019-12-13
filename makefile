@@ -6,3 +6,4 @@ upload_test:
 
 upload:
 	twine upload dist/*
+	curl -X PURGE https://pypi.org/simple/django-data-sniffer/
