@@ -13,6 +13,7 @@ setup(
     include_package_data=True,
     description='Sniff your django models to look for any data issues',
     long_description=README,
+    long_description_content_type='text/markdown',
     author='Fedor Garin',
     author_email='fedor.garin@gmail.com',
     url='https://github.com/thefedoration/django-data-sniffer/',
