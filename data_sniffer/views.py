@@ -35,10 +35,34 @@ def data_sniffer_health_check(request, key):
     else:
         objects = [status[obj_id] for obj_id in status if status[obj_id]['has_warning'] or status[obj_id]['has_alert']]  # noqa
 
+    # put into groupings based on category, must be in "extra_display_fields"
+    category_key = request.GET.get('category', None)
+    categories = {}
+    if category_key and "extra_display_fields" in config["queryset"]:
+        index = config["queryset"]["extra_display_fields"].index(category_key)
+        for object in objects:
+            obj_category = object["additional_values"][index]
+            if obj_category not in categories:
+                categories[obj_category] = {
+                    "value": obj_category,
+                    "objects": [],
+                    "has_warning": False,
+                    "has_alert": False
+                }
+            categories[obj_category]["objects"].push(object)
+            if object["has_warning"]:
+                categories[obj_category]["has_warning"] = True
+            if object["has_alert"]:
+                categories[obj_category]["has_alert"] = True
+
+        # put into list. no particular order yet
+        categories = [categories[i] for i in categories]
+
     return render(request, 'data_sniffer/status.html', {
         'key': key,
         'config': config,
         'objects': objects,
+        'categories': categories,
         'show_all': show_all,
         'count_total': len(status),
         'count_warnings': len([o for o in objects if o['has_warning']]),

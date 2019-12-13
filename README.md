@@ -12,6 +12,16 @@ Features
 - Ability to modify your queries via an externally hosted manifest file so
 that adding a new health check doesn't require a deployment
 
+Coming Soon
+========
+
+- Filters & grouping
+- Search
+- Pagination
+- Get manifest file from util method instead of URL
+- JSON API response
+- Notifications
+
 Setup
 =============
 
