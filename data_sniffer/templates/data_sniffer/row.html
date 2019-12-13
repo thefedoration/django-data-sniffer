@@ -1,3 +1,5 @@
+{% load index %}
+
 <div class="row">
    <div class="icon">
         {% if object.has_alert %}
@@ -13,8 +15,8 @@
         <div class="extra">
             {% for value in object.additional_values %}
                 <span class="arrow"> > </span>
-                <a href="{% url 'data_sniffer_health_check' key=key %}?category=organization__name#{{value}}">
-                    {{value}} - {{forloop.counter0}}
+                <a href="{% url 'data_sniffer_health_check' key=key %}?category={{config.queryset.extra_display_fields|index:forloop.counter0}}#{{value}}">
+                    {{value}}
                 </a>
             {% endfor %}
         </div>

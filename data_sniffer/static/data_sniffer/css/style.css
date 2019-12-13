@@ -15,7 +15,7 @@ h1 {
 }
 
 h3 {
-
+  margin-top: 40px;
 }
 
 .table-container{
@@ -102,6 +102,9 @@ h3 {
 }
 .table .row .values .extra .arrow:first-child{
   display:none;
+}
+.table .row .values .extra a{
+  color: #2980b9;
 }
 
 .table .row .errors{
