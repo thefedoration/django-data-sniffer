@@ -39,7 +39,7 @@
                         {% for category in categories %}
                             <h3>{{category.value}}</h3>
                             {% for object in category.objects %}
-                                {% include "row.html" %}
+                                {% include "data_sniffer/row.html" %}
                             {% endfor %}
                         {% endfor %}
                     {% else %}
