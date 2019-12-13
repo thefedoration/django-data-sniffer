@@ -7,7 +7,7 @@ README = open(os.path.join(here, 'README.md')).read()
 setup(
     name='django-data-sniffer',
     version='0.1',
-    packages=['data_sniffer', 'data_sniffer.templates', 'data_sniffer.static'],
+    packages=['data_sniffer', 'data_sniffer.templates.data_sniffer', 'data_sniffer.static'],
     description='Sniff your django models to look for any data issues',
     long_description=README,
     author='Fedor Garin',

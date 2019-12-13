@@ -1,6 +1,4 @@
-include *.txt *.ini *.cfg *.rst *.html
-include data_sniffer/*.html
-include data_sniffer/*.css
+include *.txt *.ini *.cfg *.rst
+recursive-include data_sniffer/templates/data_sniffer *.html
+recursive-include data_sniffer/static/data_sniffer/css *.css
 recursive-include data_sniffer *.ico *.png *.css *.gif *.jpg *.txt *.js *.html *.xml
-recursive-include data_sniffer/templates *
-recursive-include data_sniffer/static *
