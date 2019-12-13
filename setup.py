@@ -9,8 +9,6 @@ setup(
     version='0.1',
     packages=[
         'data_sniffer',
-        # 'data_sniffer.templates.data_sniffer',
-        # 'data_sniffer.static.data_sniffer.css',
     ],
     include_package_data=True,
     description='Sniff your django models to look for any data issues',
