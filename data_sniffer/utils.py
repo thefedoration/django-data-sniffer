@@ -1,7 +1,9 @@
-
+import json
+import requests
 from collections import OrderedDict
 
 from django.db.models.loading import get_model
+from django.conf import settings
 
 from .constants import ALERT_ERROR, ALERT_WARNING
 from .errors import (
@@ -18,8 +20,13 @@ def get_healthcheck_config(key):
     :param key: string
     :return: dict
     """
-    # TODO: get from external file
-    from tests.mocked_data import HEALTH_CHECKS
+    # get the config from the external manifest file
+    url = settings.DATA_SNIFFER_MANIFEST_FILE
+    manifest_file = requests.get(url)
+    if manifest_file.status_code == 200:
+        HEALTH_CHECKS = json.loads(manifest_file.content)
+    else:
+        HEALTH_CHECKS = {}
 
     if key not in HEALTH_CHECKS:
         raise InvalidKeyError('Missing %s in health check manifest' % key)

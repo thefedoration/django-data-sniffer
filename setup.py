@@ -16,5 +16,6 @@ setup(
     license='MIT',
     install_requires=[
         'Django>=1.7,<1.9',
+        'requests'
     ]
 )
