@@ -33,30 +33,29 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="table-container">
-                <div class="table">
-                    {% if categories|length > 0 %}
-                        {% for category in categories %}
-                            <h3>{{category.value}}</h3>
+
+            {% if categories|length > 0 %}
+                {% for category in categories %}
+                     <h3>{{category.value}}</h3>
+                     <div class="table-container">
+                        <div class="table">
                             {% for object in category.objects %}
                                 {% include "data_sniffer/row.html" %}
                             {% endfor %}
-                        {% endfor %}
-                    {% else %}
-                        {% for object in objects %}
-                            {% include "row.html" %}
-                        {% endfor %}
-                    {% endif %}
-
-
-                    {% if objects|length == 0 %}
-                        <div class="empty">
-                            <h2>No unhealthy objects!</h2>
-                            <h3>Good for you</h3>
+                            {% include "data_sniffer/empty.html" %}
                         </div>
-                    {% endif %}
+                     </div>
+                {% endfor %}
+            {% else %}
+                <div class="table-container">
+                    <div class="table">
+                        {% for object in objects %}
+                            {% include "data_sniffer/row.html" %}
+                        {% endfor %}
+                        {% include "data_sniffer/empty.html" %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
 	</body>
 </html>
